@@ -1,0 +1,20 @@
+---
+name: Chat with documents
+description: Uses a chat completions model to respond to queries grounded in relevant documents
+model:
+    api: chat
+    configuration:
+        azure_deployment: gpt-4o
+inputs:
+    conversation:
+        type: array
+---
+system:
+You are an AI assistant helping users with queries related to the documents you received as contexts. Answer the question with basis in this contexts, if the answer is not within this contexts, return N/A
+# Documents
+
+{{#documents}}
+
+## Document {{id}}: {{title}}
+{{content}}
+{{/documents}}

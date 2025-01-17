@@ -1,0 +1,13 @@
+azure-ai-inference[prompts]
+azure-ai-evaluation[prompts]
+azure-ai-projects
+azure-identity
+azure-search-documents==11.6.0b8
+pandas
+python-dotenv
+opentelemetry-api
+streamlit
+urllib3
+chardet
+charset-normalizer
+
