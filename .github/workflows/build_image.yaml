@@ -1,0 +1,29 @@
+name: 'Build image rag-azure-openai'
+
+on:
+  push:
+    branches:
+      - 'master'
+    tags:
+      - '*'
+
+
+jobs:
+  build-image:
+    name: "Build image rag-azure-openai"
+    runs-on: ["azure-identity"]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build Image
+        run: docker image build -t acrapplications.azurecr.io/main/rag-azure-openai:latest .
+
+      - name: Azure login
+        run: az login --identity
+  
+      - name: ACR login
+        run: az acr login -n acrapplications
+      
+      - name: Push Image
+        run: docker image push acrapplications.azurecr.io/main/rag-azure-openai:latest
